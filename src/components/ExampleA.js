@@ -3,6 +3,7 @@ import './visWidgetConfig.css';
 import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { getComparisonById } from 'network/networkRequests';
+import Linkify from 'linkifyjs/react';
 
 class ExampleA extends Component {
     constructor(props) {
@@ -53,6 +54,7 @@ class ExampleA extends Component {
     renderComparisonTable = () => {
         const dataFrame = this.state.requestedData.comparisonData;
         return (
+           <Linkify>
             <table class="table table-striped table-bordered" style={{ width: '100%', overflow: 'auto', display: 'block' }}>
                 {/*  define headers*/}
                 <thead class="thead-dark" style={{ borderTop: '1px solid black', borderBottom: '1px solid black' }}>
@@ -118,6 +120,7 @@ class ExampleA extends Component {
                     })}
                 </tbody>
             </table>
+            </Linkify>
         );
     };
 
