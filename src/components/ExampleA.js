@@ -53,9 +53,9 @@ class ExampleA extends Component {
     renderComparisonTable = () => {
         const dataFrame = this.state.requestedData.comparisonData;
         return (
-            <table style={{ width: '100%', overflow: 'auto', display: 'block' }}>
+            <table class="table table-striped table-bordered" style={{ width: '100%', overflow: 'auto', display: 'block' }}>
                 {/*  define headers*/}
-                <thead style={{ borderTop: '1px solid black', borderBottom: '1px solid black' }}>
+                <thead class="thead-dark" style={{ borderTop: '1px solid black', borderBottom: '1px solid black' }}>
                     <tr>
                         <th
                             style={{
