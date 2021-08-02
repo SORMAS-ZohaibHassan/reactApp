@@ -4,6 +4,7 @@ import { FontAwesomeIcon as Icon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { getComparisonById } from 'network/networkRequests';
 import Linkify from 'linkifyjs/react';
+import $ from 'jquery';
 
 class ExampleA extends Component {
     constructor(props) {
@@ -91,7 +92,7 @@ class ExampleA extends Component {
                             })}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id='tableExampleA'>
                     {Object.keys(dataFrame.data).map((data, id) => {
                         return (
                             <tr key={'tr_id' + id} style={{ border: '1px solid black', borderTop: 'none' }}>
@@ -169,11 +170,20 @@ class ExampleA extends Component {
                             Loading ...
                         </h2>
                     )}
+                     <input class="form-control col-3 float-right" id="SearchInputExampleA" type="text" placeholder="Type here to search.." />
                     {!this.state.loading && this.renderData()}
                 </div>
             </div>
         );
     }
 }
+$(document).ready(function(){
+  $("#SearchInputExampleA").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableExampleA tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
 
 export default ExampleA;
